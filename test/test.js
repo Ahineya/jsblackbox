@@ -3,7 +3,7 @@ var Terminal = require('../js/terminal.js').Terminal;
 
 describe('1 Terminal', function() {
     var t = new Terminal([1,2,3], [1,2,3]);
-    it('1.1 Should create terminal object', function() {
+    it('1.1 should create itself', function() {
         chai.assert((typeof t !== 'undefined'), "Didn't create Terminal instance");
     });
 

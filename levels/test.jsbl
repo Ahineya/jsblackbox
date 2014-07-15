@@ -8,12 +8,33 @@
     },
     "testlevel-2": {
         "id": "testlevel",
-        "color": "lightgreen",
+        "color": "pink",
         "input": [1, 2, 3],
         "output": [1, 4, 9],
         "func": "(function(num) {return num*num;})"
     },
     "testlevel-3": {
+        "id": "testlevel",
+        "color": "lightblue",
+        "input": [0, 1, -1],
+        "output": [true, false, false],
+        "func": "(function(num) {return !num;})"
+    },
+    "testlevel-4": {
+        "id": "testlevel",
+        "color": "lightgreen",
+        "input": [1, 2, 3],
+        "output": [1, 2, 3],
+        "func": "(function(num) {return num;})"
+    },
+    "testlevel-5": {
+        "id": "testlevel",
+        "color": "lightgreen",
+        "input": [1, 2, 3],
+        "output": [1, 4, 9],
+        "func": "(function(num) {return num*num;})"
+    },
+    "testlevel-6": {
         "id": "testlevel",
         "color": "lightgreen",
         "input": [0, 1, -1],
