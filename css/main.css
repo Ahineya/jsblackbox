@@ -20,6 +20,11 @@ body {
             user-select: none;
 }
 
+* {
+    -moz-user-select: none;
+       -moz-user-select: -moz-none;
+}
+
 .circle-container {
     position: absolute;
     width: 100%;
