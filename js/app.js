@@ -134,6 +134,7 @@ var window = window;
         }
 
         if (action === 'open') {
+            container.show();
             container.animate({
                 top: '10%',
                 height: '90%'
@@ -142,7 +143,7 @@ var window = window;
             container.animate({
                 height: '0%',
                 top: '100%'
-            }, 100);
+            }, 100, function() {container.hide();});
         }
     }
 
