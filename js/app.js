@@ -2,7 +2,7 @@
 
 (function() {
 
-    $.get('/levels/test.jsbl').success(function(levels) {
+    $.get('levels/test.jsbl').success(function(levels) {
         //console.log(levels);
 
         levels = JSON.parse(levels);
