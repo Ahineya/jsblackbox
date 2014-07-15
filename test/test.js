@@ -55,4 +55,18 @@ describe('1 Terminal', function() {
         chai.assert(t.status(), 'Status is incorrect');
     });
 
+    it('1.10 should throw an error after processing incorrect user input', function() {
+        t.program('incorrect');
+
+        chai.assert.throws(t.process, 'incorrect is not defined');
+
+    });
+
+    it('1.10 should throw an error after processing non-function input', function() {
+        t.program('var a = 1;');
+
+        chai.assert.throws(t.process, 'System can accept functions only.');
+
+    });
+
 });

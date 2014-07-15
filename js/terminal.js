@@ -31,6 +31,10 @@ function Terminal(invalues, validvalues) {
         try {
             var func = eval(self.program); // jshint ignore:line
 
+            if (typeof func !== 'function') {
+                throw new Error("System can accept functions only.");
+            }
+
             var result = [];
 
             var status = true;
@@ -54,7 +58,7 @@ function Terminal(invalues, validvalues) {
             return result;
 
         } catch (e) {
-            return e.toString();
+            throw e;
         }
     };
 
