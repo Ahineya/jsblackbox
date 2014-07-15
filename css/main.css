@@ -6,6 +6,12 @@ body {
 
 html {
     height: 100%;
+    -webkit-user-select: none;
+     -apple-user-select: none;
+       -moz-user-select: none;
+        -ms-user-select: none;
+         -o-user-select: none;
+            user-select: none;
 }
 
 body {
@@ -134,6 +140,10 @@ body {
     margin-bottom: 5px;
 }
 
+.level-wrapper .description-wrapper .description code {
+    background-color: white;
+}
+
 .level-wrapper .panel .console {
     width: 75%;
     padding: 20px;
@@ -144,6 +154,13 @@ body {
     position: relative;
     margin: 0 auto;
     margin-top: 20px;
+    
+    -webkit-user-select: text;
+     -apple-user-select: text;
+       -moz-user-select: text;
+        -ms-user-select: text;
+         -o-user-select: text;
+            user-select: text;
 }
 .level-wrapper .panel .buttons {
     width: 30%;
