@@ -62,8 +62,8 @@ describe('1 Terminal', function() {
 
     });
 
-    it('1.10 should throw an error after processing non-function input', function() {
-        t.program('var a = 1;');
+    it('1.11 should throw an error after processing non-function input', function() {
+        t.program('a = 1;');
 
         chai.assert.throws(t.process, 'System can accept functions only.');
 

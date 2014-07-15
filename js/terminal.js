@@ -29,7 +29,10 @@ function Terminal(invalues, validvalues) {
 
     this._process = function() {
         try {
-            var func = eval(self.program); // jshint ignore:line
+
+            var func;
+
+            eval('var func = '+self.program); // jshint ignore:line
 
             if (typeof func !== 'function') {
                 throw new Error("System can accept functions only.");
