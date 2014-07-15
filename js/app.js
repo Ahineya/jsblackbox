@@ -1,13 +1,15 @@
 var jQuery = jQuery;
+var window = window;
 
 (function($) {
 
-    var window = window;
-
     $.get('levels/test.jsbl').success(function(levels) {
-        //console.log(levels);
 
         levels = JSON.parse(levels);
+        $.map(levels, function(val) {
+            delete val.func;
+            return val;
+        });
 
         draw(levels);
 
@@ -57,7 +59,7 @@ var jQuery = jQuery;
                 top:  y + 'px',
                 borderRadius: '50%'
             }).addClass('circle')
-                .appendTo( $('.container') );
+                .appendTo( $('.circle-container') );
 
         var delta = Math.PI * 2 / count;
         var angle = 0;
@@ -71,7 +73,7 @@ var jQuery = jQuery;
                     position: 'absolute',
                     left:  center.x + (diameter/2 * Math.cos(angle)) - diameter / 20 + 'px',
                     top: center.y + (diameter/2 * Math.sin(angle)) - diameter / 20 + 'px',
-                    backgroundColor: '#aaa', //levels[l].color || 'white',
+                    backgroundColor: '#ccc', //levels[l].color || 'white',
                     width: diameter / 10 + 'px',
                     height: diameter / 10 + 'px',
                     border: '1px solid green',
@@ -95,11 +97,58 @@ var jQuery = jQuery;
                     marginTop: (parseInt(d.height())/2  - parseInt(d.find('p').height() ) /2 ) /2 + 'px' //Waaagh!
                 });
 
-            d.appendTo( $('.container')).show();
+            d.attr('data-level', l);
+
+            d.click(
+                {level: levels[l]}, loadLevel
+            );
+
+            d.appendTo( $('.circle-container')).show();
 
             angle += delta;
         }
 
     }
+
+    $('.cross').click(function() {
+        toggleContainer('close');
+    });
+
+    function loadLevel(event) {
+        var level = event.data.level;
+        console.log(level);
+
+        $('.name').text('Level: '+level.id);
+        $('.message').html(level.description);
+
+        toggleContainer('open');
+    }
+
+    function toggleContainer(action, container) {
+        if (action.data) {
+            action = action.data.action;
+        }
+
+        if (typeof container === 'undefined') {
+            container = $('.level-container');
+        }
+
+        if (action === 'open') {
+            container.animate({
+                top: '10%',
+                height: '90%'
+            }, 100);
+        } else {
+            container.animate({
+                height: '0%',
+                top: '100%'
+            }, 100);
+        }
+    }
+
+    $(window).on('scroll', function(event) {
+        event.preventDefault();
+        window.scrollTo(0, 0);
+    });
 
 })(jQuery); // jshint ignore:line

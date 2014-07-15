@@ -1,41 +1,42 @@
 {
     "testlevel-1": {
-        "id": "testlevel",
+        "id": "testlevel-1",
         "color": "lightgreen",
         "input": [1, 2, 3],
         "output": [1, 2, 3],
-        "func": "(function(num) {return num;})"
+        "func": "(function(num) {return num;})",
+        "description": "<p><span class='story'>*Mechanical voice*:</span></p><p><span class='story'>&mdash; Hello, engineer.</span></p>"
     },
     "testlevel-2": {
-        "id": "testlevel",
+        "id": "testlevel-2",
         "color": "pink",
         "input": [1, 2, 3],
         "output": [1, 4, 9],
         "func": "(function(num) {return num*num;})"
     },
     "testlevel-3": {
-        "id": "testlevel",
+        "id": "testlevel-3",
         "color": "lightblue",
         "input": [0, 1, -1],
         "output": [true, false, false],
         "func": "(function(num) {return !num;})"
     },
     "testlevel-4": {
-        "id": "testlevel",
+        "id": "testlevel-4",
         "color": "lightgreen",
         "input": [1, 2, 3],
         "output": [1, 2, 3],
         "func": "(function(num) {return num;})"
     },
     "testlevel-5": {
-        "id": "testlevel",
+        "id": "testlevel-5",
         "color": "lightgreen",
         "input": [1, 2, 3],
         "output": [1, 4, 9],
         "func": "(function(num) {return num*num;})"
     },
     "testlevel-6": {
-        "id": "testlevel",
+        "id": "testlevel-6",
         "color": "lightgreen",
         "input": [0, 1, -1],
         "output": [true, false, false],
