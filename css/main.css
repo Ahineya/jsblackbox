@@ -167,7 +167,7 @@ body {
     margin: 0 auto;
     margin-top: 20px;
     
-    
+}
 
 .level-wrapper .panel .console, .level-wrapper .panel .console * {
     -webkit-user-select: text;
@@ -176,7 +176,6 @@ body {
         -ms-user-select: text;
          -o-user-select: text;
             user-select: text;
-}
 }
 
 .level-wrapper .panel .buttons {
