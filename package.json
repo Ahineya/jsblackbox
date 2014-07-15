@@ -7,7 +7,7 @@
     "test": "test"
   },
   "scripts": {
-    "test": "mocha test/test.js -R spec && jshint js/terminal.js",
+    "test": "mocha -R spec && jshint js/terminal.js",
     "start": "http-server -p 8090"
   },
   "repository": {
@@ -27,7 +27,9 @@
   "devDependencies": {
     "chai": "^1.9.1",
     "http-server": "^0.6.1",
+    "jshint": "^2.5.2",
     "mocha": "^1.20.1",
+    "mocha-jshint": "0.0.7",
     "mocha-phantomjs": "^3.5.0",
     "phantomjs": "^1.9.7-14"
   }

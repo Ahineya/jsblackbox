@@ -8,13 +8,13 @@ describe('1 Terminal', function() {
     });
 
     it('1.2 should initialize with data', function() {
-        chai.assert(t.get().input[0] == 1, "Input did't set correctly");
-        chai.assert(t.get().input[1] == 2, "Input did't set correctly");
-        chai.assert(t.get().input[2] == 3, "Input did't set correctly");
+        chai.assert(t.get().input[0] === 1, "Input did't set correctly");
+        chai.assert(t.get().input[1] === 2, "Input did't set correctly");
+        chai.assert(t.get().input[2] === 3, "Input did't set correctly");
 
-        chai.assert(t.get().valid[0] == 1, "Valid did't set correctly");
-        chai.assert(t.get().valid[1] == 2, "Valid did't set correctly");
-        chai.assert(t.get().valid[2] == 3, "Valid did't set correctly");
+        chai.assert(t.get().valid[0] === 1, "Valid did't set correctly");
+        chai.assert(t.get().valid[1] === 2, "Valid did't set correctly");
+        chai.assert(t.get().valid[2] === 3, "Valid did't set correctly");
     });
 
     it('1.3 should be programmed', function() {
