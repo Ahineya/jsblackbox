@@ -1,8 +1,10 @@
+var jQuery = jQuery;
 
+(function($) {
 
-(function() {
+    var window = window;
 
-    $.get('/levels/test.jsbl').success(function(levels) {
+    $.get('levels/test.jsbl').success(function(levels) {
         //console.log(levels);
 
         levels = JSON.parse(levels);
@@ -11,7 +13,7 @@
 
         window.onresize = function() {
             draw(levels);
-        }
+        };
 
     });
 
@@ -21,7 +23,9 @@
 
         var count = 0;
 
-        for (var l in levels) {
+        var l;
+
+        for (l in levels) {
             count++;
         }
 
@@ -60,7 +64,7 @@
 
         var i = 0;
 
-        for (var l in levels) {
+        for (l in levels) {
             i++;
             var d = $('<div></div>')
                 .css({
@@ -89,7 +93,7 @@
             d.find('p')
                 .css({
                     marginTop: (parseInt(d.height())/2  - parseInt(d.find('p').height() ) /2 ) /2 + 'px' //Waaagh!
-                })
+                });
 
             d.appendTo( $('.container')).show();
 
@@ -98,5 +102,4 @@
 
     }
 
-
-})();
+})(jQuery); // jshint ignore:line
