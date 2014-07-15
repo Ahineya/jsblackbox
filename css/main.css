@@ -6,17 +6,18 @@ body {
 
 html {
     height: 100%;
-    -webkit-user-select: none;
-     -apple-user-select: none;
-       -moz-user-select: none;
-        -ms-user-select: none;
-         -o-user-select: none;
-            user-select: none;
 }
 
 body {
     overflow-y:hidden;
     height:100%;
+    -webkit-user-select: none;
+     -apple-user-select: none;
+       -moz-user-select: none;
+       -moz-user-select: -moz-none;
+        -ms-user-select: none;
+         -o-user-select: none;
+            user-select: none;
 }
 
 .circle-container {
@@ -142,6 +143,12 @@ body {
 
 .level-wrapper .description-wrapper .description code {
     background-color: white;
+    -webkit-user-select: text;
+     -apple-user-select: text;
+       -moz-user-select: text;
+        -ms-user-select: text;
+         -o-user-select: text;
+            user-select: text;
 }
 
 .level-wrapper .panel .console {
@@ -155,6 +162,9 @@ body {
     margin: 0 auto;
     margin-top: 20px;
     
+    
+
+.level-wrapper .panel .console, .level-wrapper .panel .console * {
     -webkit-user-select: text;
      -apple-user-select: text;
        -moz-user-select: text;
@@ -162,6 +172,8 @@ body {
          -o-user-select: text;
             user-select: text;
 }
+}
+
 .level-wrapper .panel .buttons {
     width: 30%;
     text-align: center;
