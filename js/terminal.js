@@ -1,3 +1,7 @@
+if ((typeof module) !== 'undefined') {
+    var _ = require('underscore');
+}
+
 function Terminal(invalues, validvalues, func) {
 
     this.inValues = invalues || [1,2,3];
@@ -68,8 +72,8 @@ function Terminal(invalues, validvalues, func) {
             var status = true;
 
             for (var i = 0; i < self.inValues.length; i++) {
-                var value = func(self.inValues[i]);
-                var st = value === self.validValues[i];
+                var value = func(_.clone(self.inValues[i]));
+                var st = _.isEqual(value, self.validValues[i]);
                 result.push({
                     value: value,
                     passed: st

@@ -1,13 +1,13 @@
 {
   "name": "jsblackbox",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "description": "jsblackbox javascript challenges application",
-  "main": "js/app.js.js",
+  "main": "js/app.js",
   "directories": {
     "test": "test"
   },
   "scripts": {
-    "test": "mocha -R spec && jshint js/terminal.js",
+    "test": "mocha -R spec",
     "start": "http-server -p 8090"
   },
   "repository": {
@@ -23,7 +23,7 @@
   "bugs": {
     "url": "https://github.com/Ahineya/jsblackbox/issues"
   },
-  "homepage": "https://github.com/Ahineya/jsblackbox",
+  "homepage": "https://jsblackbox.tk",
   "devDependencies": {
     "chai": "^1.9.1",
     "http-server": "^0.6.1",
@@ -31,6 +31,7 @@
     "mocha": "^1.20.1",
     "mocha-jshint": "0.0.7",
     "mocha-phantomjs": "^3.5.0",
-    "phantomjs": "^1.9.7-14"
+    "phantomjs": "^1.9.7-14",
+    "underscore": "^1.6.0"
   }
 }

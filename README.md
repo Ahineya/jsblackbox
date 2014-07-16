@@ -14,3 +14,6 @@ npm start
 ```
 
 Open a browser at [localhost:8090](http://localhost:8090/)
+
+## Levels format
+Currently levels described in an ugly format. You can see levels/levels.jsbl file.

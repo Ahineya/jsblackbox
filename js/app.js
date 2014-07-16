@@ -1,13 +1,18 @@
-var jQuery = jQuery;
-var window = window;
-var Terminal = Terminal;
+/**
+ *
+ * I think I need to rewrite this spaghetti from scratch using Angular.js. Later :)
+ * Or send me a pull request with it.
+ *
+ */
+
+/*global window: false, localStorage: false, jQuery: false, Terminal: false */
 
 (function($) {
 
     var levelsArr;
     var currentLevel = 0;
 
-    $.get('levels/test.jsbl').success(function(levels) {
+    $.get('levels/levels.jsbl').success(function(levels) {
 
         levels = JSON.parse(levels);
 
@@ -31,6 +36,8 @@ var Terminal = Terminal;
         var l;
 
         levelsArr = [];
+
+        var wonLevels = JSON.parse(localStorage.getItem('wonLevels')) || [];
 
         for (l in levels) {
             count++;
@@ -79,7 +86,7 @@ var Terminal = Terminal;
                     position: 'absolute',
                     left:  center.x + (diameter/2 * Math.cos(angle)) - diameter / 20 + 'px',
                     top: center.y + (diameter/2 * Math.sin(angle)) - diameter / 20 + 'px',
-                    backgroundColor: '#ccc', //levels[l].color || 'white',
+                    backgroundColor: wonLevels.indexOf(i) !== -1 ? 'lightgreen' : '#ccc', //levels[l].color || 'white',
                     width: diameter / 10 + 'px',
                     height: diameter / 10 + 'px',
                     border: '1px solid green',
@@ -103,7 +110,7 @@ var Terminal = Terminal;
                     marginTop: (parseInt(d.height())/2  - parseInt(d.find('p').height() ) /2 ) /2 + 'px' //Waaagh!
                 });
 
-            d.attr('data-level', l);
+            d.attr('data-level', levels[l].id);
 
             /* jshint ignore:start */
             (function(i) {
@@ -127,11 +134,28 @@ var Terminal = Terminal;
 
     $('.cross').click(function() {
         toggleContainer('close');
+    });
+
+    $('.cross-popup').click(function() {
         $('.info').hide();
     });
 
     $('.js-info').click(function() {
         $('.info').show();
+        $('.overview').show();
+        $('.select-level').show();
+
+        $('.comments').hide();
+        $('.finish').hide();
+    });
+
+    $('.js-disqus').click(function() {
+        $('.info').show();
+        $('.overview').hide();
+        $('.select-level').hide();
+        $('.finish').hide();
+
+        $('.comments').show();
     });
 
     $('.select-level').click(function() {
@@ -143,7 +167,7 @@ var Terminal = Terminal;
 
         $('.success-wrapper').hide();
         $('.tuning').find('tr').remove();
-        $('.console').text('function(num) {return 1;}');
+        $('.console').text('function(param) {return 1;}');
         $('.message').text('');
         $('.error').hide();
 
@@ -152,7 +176,15 @@ var Terminal = Terminal;
 
         $('.next').off('click').on('click', function () {
             currentLevel++;
-            loadLevel(levelsArr[currentLevel]);
+            if (levelsArr.indexOf(currentLevel) > -1) {
+                loadLevel(levelsArr[currentLevel]);
+            } else {
+                toggleContainer('hide');
+                $('.comments').hide();
+                $('.overview').hide();
+                $('.finish').show();
+                $('.info').show();
+            }
         });
 
         level.input = level.input.slice(0,3);
@@ -217,12 +249,21 @@ var Terminal = Terminal;
                     }
 
                     if (t.status()) {
+                        $error.hide();
                         $('.success').css({
                             marginTop: ($('.success-wrapper').height() / 2 - $('.success').height() / 2) / 2 + 'px'
                         });
                         $('.success-wrapper').show();
 
+                        var wonLevels = JSON.parse(localStorage.getItem('wonLevels')) || [];
+                        if (wonLevels.indexOf(i) === -1) {
+                            wonLevels.push(currentLevel);
+                            localStorage.setItem('wonLevels', JSON.stringify(wonLevels));
+                        }
 
+                        $('div[data-level='+levelsArr[currentLevel].id.replace(/\./g, '\\.')+']').css({
+                            backgroundColor: 'lightgreen'
+                        });
                     }
 
                 } catch (e) {
@@ -293,4 +334,4 @@ var Terminal = Terminal;
         window.scrollTo(0, 0);
     });
 
-})(jQuery); // jshint ignore:line
+})(jQuery);

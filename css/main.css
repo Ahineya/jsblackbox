@@ -25,6 +25,10 @@ body {
        -moz-user-select: -moz-none;
 }
 
+td {
+    padding: 3px;
+}
+
 .info {
     position: fixed;
     right: 2%;
@@ -87,7 +91,11 @@ body {
     height: 100px;
 }
 
-.info .greeting .guide {
+.info .greeting .comments {
+    display: none;
+}
+
+.info .greeting .finish {
     display: none;
 }
 
@@ -140,7 +148,7 @@ body {
     background-color: #b6b6b6;
 }
 
-.cross {
+.cross, .cross-popup {
     width: 20px;
     height: 20px;
     position: absolute;
@@ -151,7 +159,7 @@ body {
     font-size: 1.5em;
 }
 
-.cross:hover {
+.cross:hover, .cross-popup:hover {
     background-color: grey;
 }
 
@@ -211,6 +219,10 @@ body {
 
 .level-wrapper .description-wrapper .description p {
     margin-bottom: 5px;
+}
+
+.level-wrapper .description-wrapper .description a {
+    color: white;
 }
 
 .level-wrapper .description-wrapper .description code {
