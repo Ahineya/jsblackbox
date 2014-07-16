@@ -147,14 +147,7 @@ var Terminal = Terminal;
         $('.message').text('');
         $('.error').hide();
 
-        //console.log('here');
-
-        //currentLevel = event.data.current;
-
-        //var level = event.data.level;
-        //console.log(level);
-
-        $('.name').text('Level: ' + level.id);
+        $('.name').text('Terminal: ' + level.id);
         $('.message').html(level.description);
 
         $('.next').off('click').on('click', function () {
@@ -164,8 +157,6 @@ var Terminal = Terminal;
 
         level.input = level.input.slice(0,3);
         level.output = level.output.slice(0,3);
-
-        //console.log(level);
 
         var t = new Terminal(level.input, level.output, level.func);
 
@@ -188,60 +179,60 @@ var Terminal = Terminal;
 
         (function (t) {
 
-        $('.run').off('click').on('click', function () {
+            $('.run').off('click').on('click', function () {
 
-            var $error = $('.error');
-            var $tuning = $('.tuning');
+                var $error = $('.error');
+                var $tuning = $('.tuning');
 
-            $error.hide();
+                $error.hide();
 
-            t.program($('.console').text());
+                t.program($('.console').text());
 
-            try {
-                t.process(); //TODO: refactor this goto/labels. Shame on me.
+                try {
+                    t.process(); //TODO: refactor this goto/labels. Shame on me.
 
-                t.verification();
+                    t.verification();
 
-                var values = t.process();
+                    var values = t.process();
 
-                $tuning.find('tr').remove();
+                    $tuning.find('tr').remove();
 
-                for (var i = 0; i < t.get().input.length; i++) {
-                    var row = $('<tr></tr>');
+                    for (var i = 0; i < t.get().input.length; i++) {
+                        var row = $('<tr></tr>');
 
-                    var inputTd = $('<td></td>').text(level.input[i]);
-                    var outputTd = $('<td></td>')
-                        .text(values[i].value)
-                        .css({
-                            backgroundColor: values[i].passed ? '#27ae60' : '#e74c3c'
+                        var inputTd = $('<td></td>').text(level.input[i]);
+                        var outputTd = $('<td></td>')
+                            .text(values[i].value)
+                            .css({
+                                backgroundColor: values[i].passed ? '#27ae60' : '#e74c3c'
+                            });
+                        var expectedTd = $('<td></td>').text(level.output[i]);
+
+                        row.append(inputTd)
+                            .append(outputTd)
+                            .append(expectedTd);
+
+                        row.appendTo($tuning);
+
+                    }
+
+                    if (t.status()) {
+                        $('.success').css({
+                            marginTop: ($('.success-wrapper').height() / 2 - $('.success').height() / 2) / 2 + 'px'
                         });
-                    var expectedTd = $('<td></td>').text(level.output[i]);
+                        $('.success-wrapper').show();
 
-                    row.append(inputTd)
-                        .append(outputTd)
-                        .append(expectedTd);
 
-                    row.appendTo($tuning);
+                    }
 
+                } catch (e) {
+                    $error.text('# ' + e.toString());
+                    $error.show();
                 }
 
-                if (t.status()) {
-                    $('.success').css({
-                        marginTop: ($('.success-wrapper').height() / 2 - $('.success').height() / 2) / 2 + 'px'
-                    });
-                    $('.success-wrapper').show();
 
-
-                }
-
-            } catch (e) {
-                $error.text('# ' + e.toString());
-                $error.show();
-            }
-
-
-        });
-    })(t);
+            });
+        })(t);
 
         toggleContainer('open', undefined, function() {
             $('.panel').css({
