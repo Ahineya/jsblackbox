@@ -145,6 +145,7 @@ var Terminal = Terminal;
         $('.tuning').find('tr').remove();
         $('.console').text('');
         $('.message').text('');
+        $('.error').hide();
 
         //console.log('here');
 
