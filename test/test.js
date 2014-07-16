@@ -87,7 +87,6 @@ describe('1 Terminal', function() {
     });
 
     it('1.13 should create new random verification values', function() {
-        t.program('function(num) {return num;}');
 
         t.verification();
 

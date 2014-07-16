@@ -115,6 +115,7 @@ body {
 .level-wrapper .panel {
     overflow-y: auto;
     height: 100%;
+    position: relative;
 }
 
 .level-wrapper .description-wrapper {
@@ -167,6 +168,44 @@ body {
     margin: 0 auto;
     margin-top: 20px;
     
+}
+
+.level-wrapper .panel .error {
+    display: none;
+    width: 75%;
+    padding: 20px;
+    text-align: left;
+    background-color: black;
+    color: #e74c3c;
+    font-family: 'Courier New', Courier, monospace;
+    position: relative;
+    margin: 0 auto;
+}
+
+.level-wrapper .panel .success-wrapper {
+    background-color: rgba(15, 15, 15, 0.75);
+    position: absolute;
+    left: 0;
+    right: 0;
+    top: 0;
+    bottom: 0;
+    /*display: none;*/
+}
+
+.level-wrapper .panel .success {
+
+}
+
+.level-wrapper .panel .success p {
+    color: white;
+    text-shadow: 0 1px 2px rgba(0, 0, 0, 0.25);
+    font-size: 18px;
+    padding: 5px;
+}
+
+.level-wrapper .panel .success .next {
+    width: 50%;
+    margin: 0 auto;
 }
 
 .level-wrapper .panel .console, .level-wrapper .panel .console * {

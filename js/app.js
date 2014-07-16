@@ -1,20 +1,23 @@
 var jQuery = jQuery;
 var window = window;
+var Terminal = Terminal;
 
 (function($) {
+
+    var levelsArr;
+    var currentLevel = 0;
 
     $.get('levels/test.jsbl').success(function(levels) {
 
         levels = JSON.parse(levels);
-        $.map(levels, function(val) {
-            delete val.func;
-            return val;
-        });
 
         draw(levels);
 
         window.onresize = function() {
             draw(levels);
+            $('.panel').css({
+                'height': $('.level-container').height() - $('.description-wrapper').height() - 75 + 'px'
+            });
         };
 
     });
@@ -27,8 +30,11 @@ var window = window;
 
         var l;
 
+        levelsArr = [];
+
         for (l in levels) {
             count++;
+            levelsArr.push(levels[l]);
         }
 
         var dimensions = {
@@ -67,7 +73,7 @@ var window = window;
         var i = 0;
 
         for (l in levels) {
-            i++;
+
             var d = $('<div></div>')
                 .css({
                     position: 'absolute',
@@ -83,7 +89,7 @@ var window = window;
                 .addClass('level-circle')
                 .append(
                     $('<p></p>')
-                        .text(i)
+                        .text(i+1)
                         .css({
                             display: 'block',
                             margin: '0px auto',
@@ -99,13 +105,22 @@ var window = window;
 
             d.attr('data-level', l);
 
-            d.click(
-                {level: levels[l]}, loadLevel
-            );
+            /* jshint ignore:start */
+            (function(i) {
+                d.off('click').on('click', function() {
+                    /* jshint ignore:end */
+                    currentLevel = i;
+                    loadLevel(levelsArr[i]);
+                    /* jshint ignore:start */
+                });
+            })(i);
+            /* jshint ignore:end */
 
             d.appendTo( $('.circle-container')).show();
 
             angle += delta;
+
+            i++;
         }
 
     }
@@ -114,17 +129,131 @@ var window = window;
         toggleContainer('close');
     });
 
-    function loadLevel(event) {
-        var level = event.data.level;
-        console.log(level);
+    var t;
+
+    function loadLevel(level) {
+
+        $('.success-wrapper').hide();
+        $('.tuning').find('tr').remove();
+        $('.console').text('');
+        $('.message').text('');
+
+        //console.log('here');
+
+        //currentLevel = event.data.current;
+
+        //var level = event.data.level;
+        //console.log(level);
 
         $('.name').text('Level: '+level.id);
         $('.message').html(level.description);
 
-        toggleContainer('open');
+        $('.next').off('click').on('click', function() {
+                currentLevel++;
+                loadLevel(levelsArr[currentLevel]);
+        });
+
+        t = new Terminal(level.input, level.output, level.func);
+
+        t.verification(level.verFunc);
+
+        for (var i=0; i<t.get().input.length; i++) {
+            var row = $('<tr></tr>');
+
+            var inputTd = $('<td></td>').text(level.input[i]);
+            var outputTd = $('<td></td>');
+            var expectedTd = $('<td></td>').text(level.output[i]);
+
+            row.append(inputTd)
+                .append(outputTd)
+                .append(expectedTd);
+
+            row.appendTo( $('.tuning') );
+
+        }
+
+        $('.run').off('click').on('click', function() {
+
+            var $error = $('.error');
+            var $tuning = $('.tuning');
+
+            $error.hide();
+
+            t.program($('.console').text());
+
+            try {
+                t.process(); //TODO: refactor this goto/labels. Shame on me.
+
+                t.verification();
+
+                var values = t.process();
+
+                $tuning.find('tr').remove();
+
+                for (var i=0; i<t.get().input.length; i++) {
+                    var row = $('<tr></tr>');
+
+                    var inputTd = $('<td></td>').text(level.input[i]);
+                    var outputTd = $('<td></td>')
+                        .text(values[i].value)
+                        .css({
+                            backgroundColor: values[i].passed ? '#27ae60' : '#e74c3c'
+                        });
+                    var expectedTd = $('<td></td>').text(level.output[i]);
+
+                    row.append(inputTd)
+                        .append(outputTd)
+                        .append(expectedTd);
+
+                    row.appendTo( $tuning );
+
+                }
+
+                if (t.status()) {
+                    $('.success').css({
+                        marginTop: ($('.success-wrapper').height() / 2 - $('.success').height() / 2) / 2 + 'px'
+                    });
+                    $('.success-wrapper').show();
+
+
+                }
+
+            } catch(e) {
+                $error.text('# ' + e.toString());
+                $error.show();
+            }
+
+
+        });
+
+        toggleContainer('open', undefined, function() {
+            $('.panel').css({
+                'height': $('.level-container').height() - $('.description-wrapper').height() - 75 + 'px'
+            });
+        });
+
+
     }
 
-    function toggleContainer(action, container) {
+    /*function getValueTd(rowIndex, column) {
+        switch (column) {
+            case 'input':
+                column = 0;
+                break;
+            case 'output':
+                column = 1;
+                break;
+            case 'expected':
+                column = 2;
+        }
+        return $('.tuning')
+            .find('tr')
+            .eq(rowIndex)
+                .find('td')
+                .eq(column);
+    }*/
+
+    function toggleContainer(action, container, callback) {
         if (action.data) {
             action = action.data.action;
         }
@@ -138,7 +267,11 @@ var window = window;
             container.animate({
                 top: '10%',
                 height: '90%'
-            }, 100);
+            }, 100, function() {
+                if (typeof callback !== 'undefined') {
+                    callback();
+                }
+            });
         } else {
             container.animate({
                 height: '0%',

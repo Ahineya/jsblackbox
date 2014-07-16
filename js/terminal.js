@@ -2,7 +2,7 @@ function Terminal(invalues, validvalues, func) {
 
     this.inValues = invalues || [1,2,3];
     this.validValues = validvalues || [1,2,3];
-    this.program = 'function() {return 1;}';
+    this.program = '';
     this.func = func || 'function() {return 1;}'; // jshint ignore:line
     this.status = false;
     this.verificationFunction = undefined;
@@ -27,12 +27,16 @@ function Terminal(invalues, validvalues, func) {
 
     this._generateVerificationValues = function(verificationFunction) {
 
+
         if (typeof verificationFunction !== 'undefined') {
             eval('self.verificationFunction = ' + verificationFunction); // jshint ignore:line
         }
 
         var key;
         var verificationValues = self.verificationFunction();
+
+        //console.log(self.verificationFunction);
+
 
         eval('var func = ' + self.func); // jshint ignore:line
 
