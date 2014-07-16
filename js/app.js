@@ -143,7 +143,7 @@ var Terminal = Terminal;
 
         $('.success-wrapper').hide();
         $('.tuning').find('tr').remove();
-        $('.console').text('');
+        $('.console').text('function(num) {return 1;}');
         $('.message').text('');
         $('.error').hide();
 
