@@ -1,9 +1,11 @@
-function Terminal(invalues, validvalues) {
+function Terminal(invalues, validvalues, func) {
 
     this.inValues = invalues || [1,2,3];
     this.validValues = validvalues || [1,2,3];
-    this.program = '(function() {return 1;})';
+    this.program = 'function() {return 1;}';
+    this.func = func || 'function() {return 1;}'; // jshint ignore:line
     this.status = false;
+    this.verificationFunction = undefined;
 
     var self = this;
 
@@ -21,6 +23,25 @@ function Terminal(invalues, validvalues) {
         }
 
         return false;
+    };
+
+    this._generateVerificationValues = function(verificationFunction) {
+
+        if (typeof verificationFunction !== 'undefined') {
+            eval('self.verificationFunction = ' + verificationFunction); // jshint ignore:line
+        }
+
+        var key;
+        var verificationValues = self.verificationFunction();
+
+        eval('var func = ' + self.func); // jshint ignore:line
+
+        for(key in verificationValues) {
+            var value = verificationValues[key];
+            self.inValues.push(value);
+            self.validValues.push(func(value));
+        }
+
     };
 
     this._status = function() {
@@ -69,7 +90,8 @@ function Terminal(invalues, validvalues) {
         get: this._get,
         program: this._program,
         status: this._status,
-        process: this._process
+        process: this._process,
+        verification: this._generateVerificationValues
     };
 }
 

@@ -2,7 +2,7 @@ var chai = require('chai');
 var Terminal = require('../js/terminal.js').Terminal;
 
 describe('1 Terminal', function() {
-    var t = new Terminal([1,2,3], [1,2,3]);
+    var t = new Terminal([1,2,3], [1,2,3], 'function(num) {return num;}');
     it('1.1 should create itself', function() {
         chai.assert((typeof t !== 'undefined'), "Didn't create Terminal instance");
     });
@@ -66,6 +66,44 @@ describe('1 Terminal', function() {
         t.program('a = 1;');
 
         chai.assert.throws(t.process, 'System can accept functions only.');
+
+    });
+
+    it('1.12 should create random verification values', function() {
+        t.program('function(num) {return num;}');
+
+        t.verification('function() {var res = []; var i; for (i = 0; i<=2; i++) {res.push(i+5);} return res;}');
+
+        var values = t.process();
+
+        chai.assert(values[0].passed && (values[0].value === 1), "Incorrect processing");
+        chai.assert(values[1].passed && (values[1].value === 2), "Incorrect processing");
+        chai.assert(values[2].passed && (values[2].value === 3), "Incorrect processing");
+
+        chai.assert(values[3].passed && (values[3].value === 5), "Incorrect verification");
+        chai.assert(values[4].passed && (values[4].value === 6), "Incorrect verification");
+        chai.assert(values[5].passed && (values[5].value === 7), "Incorrect verification");
+
+    });
+
+    it('1.13 should create new random verification values', function() {
+        t.program('function(num) {return num;}');
+
+        t.verification();
+
+        var values = t.process();
+
+        chai.assert(values[0].passed && (values[0].value === 1), "Incorrect processing");
+        chai.assert(values[1].passed && (values[1].value === 2), "Incorrect processing");
+        chai.assert(values[2].passed && (values[2].value === 3), "Incorrect processing");
+
+        chai.assert(values[3].passed && (values[3].value === 5), "Incorrect verification");
+        chai.assert(values[4].passed && (values[4].value === 6), "Incorrect verification");
+        chai.assert(values[5].passed && (values[5].value === 7), "Incorrect verification");
+
+        chai.assert(values[3].passed && (values[6].value === 5), "Incorrect more verification");
+        chai.assert(values[4].passed && (values[7].value === 6), "Incorrect more verification");
+        chai.assert(values[5].passed && (values[8].value === 7), "Incorrect more verification");
 
     });
 
