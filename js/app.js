@@ -1,6 +1,11 @@
-var jQuery = jQuery;
-var window = window;
-var Terminal = Terminal;
+/**
+ *
+ * I think i need rewrite this from scratch using Angular.js. Later :)
+ * Or send me a pull request with it.
+ *
+ */
+
+/*global window: false, localStorage: false, jQuery: false, Terminal: false */
 
 (function($) {
 
@@ -31,6 +36,8 @@ var Terminal = Terminal;
         var l;
 
         levelsArr = [];
+
+        var wonLevels = JSON.parse(localStorage.getItem('wonLevels')) || [];
 
         for (l in levels) {
             count++;
@@ -79,7 +86,7 @@ var Terminal = Terminal;
                     position: 'absolute',
                     left:  center.x + (diameter/2 * Math.cos(angle)) - diameter / 20 + 'px',
                     top: center.y + (diameter/2 * Math.sin(angle)) - diameter / 20 + 'px',
-                    backgroundColor: '#ccc', //levels[l].color || 'white',
+                    backgroundColor: wonLevels.indexOf(i) !== -1 ? 'lightgreen' : '#ccc', //levels[l].color || 'white',
                     width: diameter / 10 + 'px',
                     height: diameter / 10 + 'px',
                     border: '1px solid green',
@@ -222,6 +229,13 @@ var Terminal = Terminal;
                         });
                         $('.success-wrapper').show();
 
+                        var wonLevels = JSON.parse(localStorage.getItem('wonLevels')) || [];
+                        wonLevels.push(currentLevel);
+                        localStorage.setItem('wonLevels', JSON.stringify(wonLevels));
+
+                        $('div[data-level='+levelsArr[currentLevel].id+']').css({
+                            backgroundColor: 'lightgreen'
+                        });
 
                     }
 
@@ -293,4 +307,4 @@ var Terminal = Terminal;
         window.scrollTo(0, 0);
     });
 
-})(jQuery); // jshint ignore:line
+})(jQuery);
