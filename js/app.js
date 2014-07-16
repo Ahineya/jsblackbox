@@ -127,9 +127,17 @@ var Terminal = Terminal;
 
     $('.cross').click(function() {
         toggleContainer('close');
+        $('.info').hide();
     });
 
-    var t;
+    $('.js-info').click(function() {
+        $('.info').show();
+    });
+
+    $('.select-level').click(function() {
+        $('.info').hide();
+        toggleContainer('close');
+    });
 
     function loadLevel(level) {
 
@@ -145,19 +153,24 @@ var Terminal = Terminal;
         //var level = event.data.level;
         //console.log(level);
 
-        $('.name').text('Level: '+level.id);
+        $('.name').text('Level: ' + level.id);
         $('.message').html(level.description);
 
-        $('.next').off('click').on('click', function() {
-                currentLevel++;
-                loadLevel(levelsArr[currentLevel]);
+        $('.next').off('click').on('click', function () {
+            currentLevel++;
+            loadLevel(levelsArr[currentLevel]);
         });
 
-        t = new Terminal(level.input, level.output, level.func);
+        level.input = level.input.slice(0,3);
+        level.output = level.output.slice(0,3);
+
+        //console.log(level);
+
+        var t = new Terminal(level.input, level.output, level.func);
 
         t.verification(level.verFunc);
 
-        for (var i=0; i<t.get().input.length; i++) {
+        for (var i = 0; i < t.get().input.length; i++) {
             var row = $('<tr></tr>');
 
             var inputTd = $('<td></td>').text(level.input[i]);
@@ -168,11 +181,13 @@ var Terminal = Terminal;
                 .append(outputTd)
                 .append(expectedTd);
 
-            row.appendTo( $('.tuning') );
+            row.appendTo($('.tuning'));
 
         }
 
-        $('.run').off('click').on('click', function() {
+        (function (t) {
+
+        $('.run').off('click').on('click', function () {
 
             var $error = $('.error');
             var $tuning = $('.tuning');
@@ -190,7 +205,7 @@ var Terminal = Terminal;
 
                 $tuning.find('tr').remove();
 
-                for (var i=0; i<t.get().input.length; i++) {
+                for (var i = 0; i < t.get().input.length; i++) {
                     var row = $('<tr></tr>');
 
                     var inputTd = $('<td></td>').text(level.input[i]);
@@ -205,7 +220,7 @@ var Terminal = Terminal;
                         .append(outputTd)
                         .append(expectedTd);
 
-                    row.appendTo( $tuning );
+                    row.appendTo($tuning);
 
                 }
 
@@ -218,13 +233,14 @@ var Terminal = Terminal;
 
                 }
 
-            } catch(e) {
+            } catch (e) {
                 $error.text('# ' + e.toString());
                 $error.show();
             }
 
 
         });
+    })(t);
 
         toggleContainer('open', undefined, function() {
             $('.panel').css({

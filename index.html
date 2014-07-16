@@ -10,9 +10,63 @@
 <body>
 
 <div class="links">
-    <a href="#">One</a>
+    <a href="#" class="js-info">About</a>
     <a href="#">Two</a>
     <a href="#" class="three">Three</a>
+</div>
+
+<div class="info">
+    <div class="cross">
+        &times;
+    </div>
+    <div class="greeting">
+        <div class="words">
+
+            <div class="overview">
+
+                <h3>Greetings!</h3>
+                <p>
+                    If you want to proud of a beating all challenges, play fairly.
+                </p>
+                <p>
+                    If you found any bugs, please, write them to <a href="https://github.com/Ahineya/jsblackbox/issues" target="_blank">https://github.com/Ahineya/jsrobot/issues</a>
+                </p>
+                <p>
+                    Github repository <a href="https://github.com/Ahineya/jsblackbox" target="_blank">here</a>
+                </p>
+                <p>
+                    There is no advertising for the great justice.
+                    But if you want, you can make a donation to webmoney <span class='code'>Z357090687121</span>
+                </p>
+            </div>
+
+            <div class="guide">
+                <p>Available robot functions:</p>
+                <p>
+                    Moving functions moves the robot in specified direction.
+                    There are this functions and shortcuts:<br>
+                    <span class="code">R.move(direction);</span><br>
+                    <span class="code">R.walk(direction);</span><br>
+                    <span class="code">R.right();</span><br>
+                    <span class="code">R.left();</span><br>
+                    <span class="code">R.up();</span><br>
+                    <span class="code">R.down();</span><br>
+                    If robot can't move in specified direction then this functions returns false, otherwise they returns true.
+                </p>
+                <p>
+                    Recognizing function:<br>
+                    <span class="code">R.standingOn(symbol);</span><br>
+                    <span class="code">R.standingOn();</span><br>
+                    If the symbol specified it returns true if robot stands on specified symbol, otherwise returns false.<br>
+                    If the symbol isn't specified it returns symbol that robot stands when calling this function.
+                </p>
+            </div>
+        </div>
+        <div class="bottom">
+            <button class="select-level nephritis-flat-button">Select level</button>
+        </div>
+    </div>
+
 </div>
 
 <div class="circle-container">

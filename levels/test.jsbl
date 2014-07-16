@@ -6,7 +6,7 @@
         "output": [1, 2, 3],
         "func": "(function(num) {return num;})",
         "verFunc": "function() {var res = []; for (var i = 0; i<3; i++) {res.push(Math.floor(Math.random() * 1000));} return res;}",
-        "description": "<p><span class='story'>*Mechanical voice*:</span></p><p><span class='story'>&mdash; Hello, engineer. I was waiting for you.</span></p><p><span class='story'>My modules were reseted and you must program them again.</span></p><p>You see two panels. In console you need to write a function, that assepts parameter from Input column and returns expected. </p><p>Try this one: write <code>function(num) {return num;}</code></p>"
+        "description": "<p><span class='story'>*Mechanical voice*:</span></p><p><span class='story'>&mdash; Hello, engineer. I was waiting for you.</span></p><p><span class='story'>My modules were reseted and you must program them again.</span></p><p>You see two panels. In console you need to write a function, that assepts parameter from Input column and returns value from Expected column. </p><p>Try this one: write <code>function(num) {return num;}</code></p>"
     },
     "testlevel-2": {
         "id": "testlevel-2",
