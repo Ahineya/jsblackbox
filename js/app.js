@@ -176,7 +176,7 @@
 
         $('.next').off('click').on('click', function () {
             currentLevel++;
-            if (levelsArr[currentLevel !== 'undefined']) {
+            if (levelsArr[currentLevel] !== 'undefined') {
                 loadLevel(levelsArr[currentLevel]);
             } else {
                 toggleContainer('hide');
