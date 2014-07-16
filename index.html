@@ -4,6 +4,7 @@
     <meta charset="UTF-8">
     <title>JS Black Box</title>
     <script src="lib/jquery-2.1.1.js"></script>
+    <script src="lib/underscore.min.js"></script>
     <link rel="stylesheet" href="css/reset.css"/>
     <link rel="stylesheet" href="css/main.css"/>
 </head>
@@ -11,16 +12,16 @@
 
 <div class="links">
     <a href="#" class="js-info">About</a>
+    <a href="#" class="js-disqus">Comments</a>
     <a href="http://jsrobot.tk" target = "_blank">JS Robot</a>
 </div>
 
 <div class="info">
-    <div class="cross">
+    <div class="cross-popup">
         &times;
     </div>
     <div class="greeting">
         <div class="words">
-
             <div class="overview">
 
                 <h3>Greetings!</h3>
@@ -42,41 +43,48 @@
                     If you want to proud of a beating all challenges, play fairly.
                 </p>
                 <p>
+                    Click on <a href="#" class="js-disqus">Comments</a> in top right corner to open a comments.
+                </p>
+                <p>
                     If you found any bugs, please, write them to <a href="https://github.com/Ahineya/jsblackbox/issues" target="_blank">https://github.com/Ahineya/jsrobot/issues</a>
                 </p>
                 <p>
                     Github repository <a href="https://github.com/Ahineya/jsblackbox" target="_blank">here</a>
                 </p>
                 <p>
-                    There is no advertising for the great justice.
-                    But if you want, you can make a donation to webmoney <span class='code'>Z357090687121</span>
+                    There is no advertising in this game.
+                    But if you really want, you can make a donation to webmoney <span class='code'>Z357090687121</span>
                 </p>
                 <p>
                     And check out my another javascript programming game: <a href="http://jsrobot.tk" target="_blank">JS Robot</a>
                 </p>
             </div>
 
-            <div class="guide">
-                <p>Available robot functions:</p>
-                <p>
-                    Moving functions moves the robot in specified direction.
-                    There are this functions and shortcuts:<br>
-                    <span class="code">R.move(direction);</span><br>
-                    <span class="code">R.walk(direction);</span><br>
-                    <span class="code">R.right();</span><br>
-                    <span class="code">R.left();</span><br>
-                    <span class="code">R.up();</span><br>
-                    <span class="code">R.down();</span><br>
-                    If robot can't move in specified direction then this functions returns false, otherwise they returns true.
-                </p>
-                <p>
-                    Recognizing function:<br>
-                    <span class="code">R.standingOn(symbol);</span><br>
-                    <span class="code">R.standingOn();</span><br>
-                    If the symbol specified it returns true if robot stands on specified symbol, otherwise returns false.<br>
-                    If the symbol isn't specified it returns symbol that robot stands when calling this function.
-                </p>
+            <div class="comments">
+                <div id="disqus_thread"></div>
+                <script type="text/javascript">
+                    /* * * CONFIGURATION VARIABLES: EDIT BEFORE PASTING INTO YOUR WEBPAGE * * */
+                    var disqus_shortname = 'jsblackbox'; // required: replace example with your forum shortname
+
+                    /* * * DON'T EDIT BELOW THIS LINE * * */
+                    (function() {
+                        var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+                        dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+                        (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+                    })();
+                </script>
+                <noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+                <a href="http://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
             </div>
+
+            <div class="finish">
+                <p>It was the last level.</p>
+                <p>If you like the game, the best you can do is a create new levels.</p>
+                <p>Push them to <a href="https://github.com/Ahineya/jsblackbox" target="_blank">Github repository</a></p>
+                <p>Thank you for playing!</p>
+                <p>Code for the great justice!</p>
+            </div>
+
         </div>
         <div class="bottom">
             <button class="select-level nephritis-flat-button">Go to the Terminal Network</button>

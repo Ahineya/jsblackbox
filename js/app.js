@@ -1,6 +1,6 @@
 /**
  *
- * I think i need rewrite this from scratch using Angular.js. Later :)
+ * I think I need to rewrite this spaghetti from scratch using Angular.js. Later :)
  * Or send me a pull request with it.
  *
  */
@@ -12,7 +12,7 @@
     var levelsArr;
     var currentLevel = 0;
 
-    $.get('levels/test.jsbl').success(function(levels) {
+    $.get('levels/levels.jsbl').success(function(levels) {
 
         levels = JSON.parse(levels);
 
@@ -110,7 +110,7 @@
                     marginTop: (parseInt(d.height())/2  - parseInt(d.find('p').height() ) /2 ) /2 + 'px' //Waaagh!
                 });
 
-            d.attr('data-level', l);
+            d.attr('data-level', levels[l].id);
 
             /* jshint ignore:start */
             (function(i) {
@@ -134,11 +134,28 @@
 
     $('.cross').click(function() {
         toggleContainer('close');
+    });
+
+    $('.cross-popup').click(function() {
         $('.info').hide();
     });
 
     $('.js-info').click(function() {
         $('.info').show();
+        $('.overview').show();
+        $('.select-level').show();
+
+        $('.comments').hide();
+        $('.finish').hide();
+    });
+
+    $('.js-disqus').click(function() {
+        $('.info').show();
+        $('.overview').hide();
+        $('.select-level').hide();
+        $('.finish').hide();
+
+        $('.comments').show();
     });
 
     $('.select-level').click(function() {
@@ -150,7 +167,7 @@
 
         $('.success-wrapper').hide();
         $('.tuning').find('tr').remove();
-        $('.console').text('function(num) {return 1;}');
+        $('.console').text('function(param) {return 1;}');
         $('.message').text('');
         $('.error').hide();
 
@@ -159,7 +176,15 @@
 
         $('.next').off('click').on('click', function () {
             currentLevel++;
-            loadLevel(levelsArr[currentLevel]);
+            if (levelsArr.indexOf(currentLevel) > -1) {
+                loadLevel(levelsArr[currentLevel]);
+            } else {
+                toggleContainer('hide');
+                $('.comments').hide();
+                $('.overview').hide();
+                $('.finish').show();
+                $('.info').show();
+            }
         });
 
         level.input = level.input.slice(0,3);
@@ -224,19 +249,21 @@
                     }
 
                     if (t.status()) {
+                        $error.hide();
                         $('.success').css({
                             marginTop: ($('.success-wrapper').height() / 2 - $('.success').height() / 2) / 2 + 'px'
                         });
                         $('.success-wrapper').show();
 
                         var wonLevels = JSON.parse(localStorage.getItem('wonLevels')) || [];
-                        wonLevels.push(currentLevel);
-                        localStorage.setItem('wonLevels', JSON.stringify(wonLevels));
+                        if (wonLevels.indexOf(i) === -1) {
+                            wonLevels.push(currentLevel);
+                            localStorage.setItem('wonLevels', JSON.stringify(wonLevels));
+                        }
 
-                        $('div[data-level='+levelsArr[currentLevel].id+']').css({
+                        $('div[data-level='+levelsArr[currentLevel].id.replace(/\./g, '\\.')+']').css({
                             backgroundColor: 'lightgreen'
                         });
-
                     }
 
                 } catch (e) {
