@@ -127,6 +127,7 @@ td {
 .level-circle:hover {
     border: 3px solid green !important;
     cursor: pointer;
+    margin: -2px 0 0 -2px;
 }
 
 .links {
@@ -157,6 +158,7 @@ td {
     cursor: pointer;
     z-index: 100;
     font-size: 1.5em;
+    text-align: center;
 }
 
 .cross:hover, .cross-popup:hover {
@@ -307,11 +309,12 @@ td {
 
 
 /*--------------------------------*/
+button {outline: none;}
 .nephritis-flat-button {
     position: relative;
-    vertical-align: top;
     width: 100%;
     height: 60px;
+    line-height: 60px;
     padding: 0;
     font-size: 18px;
     color: white;
