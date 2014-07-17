@@ -1,5 +1,5 @@
 var chai = require('chai');
-var Terminal = require('../js/terminal.js').Terminal;
+var Terminal = require('../src/js/terminal.js').Terminal;
 
 describe('1 Terminal', function() {
     var t = new Terminal([1,2,3], [1,2,3], 'function(num) {return num;}');

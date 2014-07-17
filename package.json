@@ -7,9 +7,8 @@
     "test": "test"
   },
   "scripts": {
-      "install": "node levels/jsbl.js",
-    "test": "mocha -R spec",
-    "start": "http-server -p 8090"
+    "test": "grunt mochaTest",
+    "start": "grunt server"
   },
   "repository": {
     "type": "git",
@@ -24,15 +23,25 @@
   "bugs": {
     "url": "https://github.com/Ahineya/jsblackbox/issues"
   },
-  "homepage": "https://jsblackbox.tk",
+  "homepage": "http://jsblackbox.tk",
   "devDependencies": {
     "chai": "^1.9.1",
+    "grunt": "^0.4.5",
+    "grunt-contrib-concat": "^0.4.0",
+    "grunt-contrib-connect": "^0.8.0",
+    "grunt-contrib-copy": "^0.5.0",
+    "grunt-contrib-uglify": "^0.5.0",
+    "grunt-contrib-watch": "^0.6.1",
+    "grunt-gh-pages": "^0.9.1",
+    "grunt-mocha-test": "^0.11.0",
+    "grunt-run": "^0.2.2",
     "http-server": "^0.6.1",
     "jshint": "^2.5.2",
     "mocha": "^1.20.1",
     "mocha-jshint": "0.0.7",
     "mocha-phantomjs": "^3.5.0",
     "phantomjs": "^1.9.7-14",
+    "uglifyjs": "^2.3.6",
     "underscore": "^1.6.0"
   }
 }
