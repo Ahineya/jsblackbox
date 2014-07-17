@@ -2,7 +2,7 @@
 Javascript functional challenges application
 ## How To Install
 
-Requires Node.js
+Requires Node.js and Grunt.
 
 Clone or download this repository.
 
@@ -16,4 +16,4 @@ npm start
 Open a browser at [localhost:8090](http://localhost:8090/)
 
 ## Levels format
-Currently levels described in an ugly format. You can see levels/levels.jsbl file.
+Currently levels described in an ugly format. You can see src/levels/levels.jsbl file.
