@@ -1,93 +1,1 @@
-{
-    "testlevel-1": {
-        "id": "test.interface",
-        "color": "lightgreen",
-        "input": [1, 2, 3],
-        "output": [1, 2, 3],
-        "func": "(function(num) {return num;})",
-        "verFunc": "function() {var res = []; for (var i = 0; i<3; i++) {res.push(Math.floor(Math.random() * 1000));} return res;}",
-        "description": "<p><span class='story'>*Mechanical voice*:</span></p><p><span class='story'>&mdash; Hello, engineer. I was waiting for you.</span></p><p><span class='story'>My modules were reseted and you must program them again.</span></p><p>You see two panels. In console you need to write a function, that assepts parameter from Input column and returns value from Expected column. </p><p>Try this one: write <code>function(num) {return num;}</code></p>"
-    },
-    "testlevel-2": {
-        "id": "test.number.processing",
-        "color": "pink",
-        "input": [1, 2, 3],
-        "output": [1, 4, 9],
-        "func": "(function(num) {return num*num;})",
-        "verFunc": "function() {var res = []; for (var i = 0; i<3; i++) {res.push(Math.floor(Math.random() * 1000));} return res;}",
-        "description": "<p><span class='story'>*Mechanical voice*:</span></p><p><span class='story'>&mdash; thenks Torvalds there are computer engineers!</span></p><p><span class='story'>Check my number processing unit.</span></p><p>First three input number is pre-defined. Other are generated to avoid your cheating in this game.</p><p>Of course, you can see a sources of this game and find solution.</p><p>If you will do that, then you have been bitten by Roger Wilco.</p>"
-
-    },
-    "testlevel-3": {
-        "id": "test.logical.unit",
-        "color": "lightblue",
-        "input": [0, 1, -1],
-        "output": [true, false, false],
-        "func": "(function(num) {return !num;})",
-        "verFunc": "function() {var res = []; for (var i = 0; i<3; i++) {res.push(Math.floor(Math.random() * 1000));} return res;}",
-        "description": "<p><span class='story'>*Mechanical voice*:</span></p><p><span class='story'>&mdash; Yeah, my logical unit. Without it I can't decide what do I want: a strawberry, or to kill people.</span></p><p>If you want, you can create your own levels. Just push them to github repo. And I'll see, what can I do :) Long live the javascript!</p>"
-    },
-    "testlevel-4": {
-        "id": "test.number.difference",
-        "color": "lightgreen",
-        "input": [1, 2, 3],
-        "output": [false, true, false],
-        "func": "function(num) {return (num % 2) === 0;}",
-        "verFunc": "function() {var res = []; for (var i = 0; i<3; i++) {res.push(Math.floor(Math.random() * 1000));} return res;}",
-        "description": "<p><span class='story'>*Mechanical voice*:</span></p><p><span class='story'>&mdash; After that system crash I forgot basic number categories. Is 1 an orange number?..</span></p><p>Sometimes you would't recognize a function in first sight. Just press Load and run button few times to get more values.</p>"
-    },
-    "testlevel-5": {
-        "id": "test.number.math",
-        "color": "lightgreen",
-        "input": [1, 2, 3],
-        "output": [4, 6, 8],
-        "func": "(function(num) {return (num+1) * 2;})",
-        "verFunc": "function() {var res = []; for (var i = 0; i<3; i++) {res.push(Math.floor(Math.random() * 1000));} return res;}",
-        "description": "<p><span class='story'>*Mechanical voice*:</span></p><p><span class='story'>&mdash; My logical unit tolds me that I need to remember simple mathematics.</span></p>"
-    },
-    "testlevel-6": {
-        "id": "test.string.processing",
-        "color": "lightgreen",
-        "input": ["robots", "better", "humans"],
-        "output": ["rob", "bet", "hum"],
-        "verFunc": "function() {var res = []; for (var i = 0; i<3; i++) {res.push(Math.random().toString(36).replace(/[^a-z]+/g, ''));} return res;}",
-        "func": "function(str) {return str.slice(0, 3);}",
-        "description": "<p><span class='story'>*Mechanical voice*:</span></p><p><span class='story'>&mdash; Please, check my string processing unit. It's a pity when you aren't sure in your own words.</span></p>"
-    },
-    "testlevel-7": {
-        "id": "test.logical.operations",
-        "color": "lightblue",
-        "input": [[true, true], [true, false], [false, true]],
-        "output": [true, true, true],
-        "func": "(function(param) {return param[0] || param[1];})",
-        "verFunc": "function() {var res=[]; for(var i = 0; i<3; i++) {res.push([Math.random() >= 0.5, Math.random() >= 0.5]); } return res;}",
-        "description": "<p><span class='story'>*Mechanical voice*:</span></p><p><span class='story'>&mdash; Logic is very, very important. Logic gives to robots a possibility to avoid killing all people.</span></p><p>If there are some parameters with comma delimeter, they passed to your function as an array.</p>"
-    },
-    "testlevel-8": {
-        "id": "test.array.sorting",
-        "color": "lightgreen",
-        "input": [[1, 0, 2], [5, 4, 3], [3, 22, 1]],
-        "output": [[0, 1, 2], [3, 4, 5], [1, 3, 22]],
-        "verFunc": "function() {var res=[]; for(var i = 0; i<3; i++) {res.push([Math.floor(Math.random() * 1000),Math.floor(Math.random() * 100),Math.floor(Math.random() * 10)]); } return res;}",
-        "func": "(function(param) {return param.sort(function(a,b) {return a-b;});})",
-        "description": "<p><span class='story'>*Mechanical voice*:</span></p><p><span class='story'>&mdash; It seems like my array sorting module is completely broken. Take a look, please.</span></p><p>Oh, by the way. You can use <a href='http://underscorejs.org' target='_blank'>underscore.js</a> and jQuery. </p>"
-    },
-    "testlevel-9": {
-        "id": "test.string.finding",
-        "color": "lightgreen",
-        "input": [["ab", "abcd"], ["ab", "0abc"], ["ab", "efgh"]],
-        "output": [true, true, false],
-        "func": "(function(param) {var r = new RegExp(param[0], 'g'); return r.test(param[1]);})",
-        "verFunc": "function() {var res=[]; for(var i = 0; i<3; i++) {res.push(['ab', Math.random().toString(13).replace(/[^a-z]+/g, '').slice(0, 4)]); } return res;}",
-        "description": "<p><span class='story'>*Mechanical voice*:</span></p><p><span class='story'>&mdash; I lost a needle in this haystack.</span></p>"
-    },
-    "testlevel-10": {
-        "id": "test.string.parsing",
-        "color": "lightgreen",
-        "input": ["<word>key</word>", "<another-word>is:</another-word>", "<lastWord>regexp?</lastWord>"],
-        "output": ["key", "is", "regexp"],
-        "func": "function(param) {return /<(.*)>([a-z]*).*<\\/\\1>/.exec(param)[2];}",
-        "verFunc": "function() {var res=[]; for(var i = 0; i<3; i++) {var word = Math.random().toString(36).replace(/[^a-z]+/g, '').slice(0, 5); var extract = Math.random().toString(36).replace(/[^a-z]+/g, '').slice(0, 10); var symbol = ['1','@','#','$','%','^','&','','',''][Math.floor(Math.random() * 10)]; res.push('<'+word+'>' + extract + symbol + '</' + word + '>'); } return res;}",
-        "description": "<p><span class='story'>*Mechanical voice*:</span></p><p><span class='story'>&mdash; When I work as Google Bot, I need parsing unit.</span></p><p><a href='http://stackoverflow.com/questions/1732348/regex-match-open-tags-except-xhtml-self-contained-tags'>I know.</a></p>"
-    }
-}
+|''''%sbtskbqbk*6%='|''''''''%nc%='%sbts)nisbuafdb%+''''''''%dhkhu%='%kn`os`ubbi%+''''''''%niwrs%='\6+'5+'4Z+''''''''%hrswrs%='\6+'5+'4Z+''''''''%arid%='%/aridsnhi/irj.'|ubsrui'irj<z.%+''''''''%qbuArid%='%aridsnhi/.'|qfu'ubt':'\Z<'ahu'/qfu'n':'7<'n;4<'n,,.'|ubt)wrto/Jfso)akhhu/Jfso)ufichj/.'-'6777..<z'ubsrui'ubt<z%+''''''''%cbtdunwsnhi%='%;w9;twfi'dkftt: tshu~ 9-Jbdofindfk'qhndb-=;(twfi9;(w9;w9;twfi'dkftt: tshu~ 9!jcfto<'Obkkh+'bi`nibbu)'N'pft'pfnsni`'ahu'~hr);(twfi9;(w9;w9;twfi'dkftt: tshu~ 9J~'jhcrkbt'pbub'ubtbsbc'fic'~hr'jrts'wuh`ufj'sobj'f`fni);(twfi9;(w9;w9^hr'tbb'sph'wfibkt)'Ni'dhithkb'~hr'ibbc'sh'punsb'f'aridsnhi+'sofs'fttbwst'wfufjbsbu'auhj'Niwrs'dhkrji'fic'ubsruit'qfkrb'auhj'Bwbdsbc'dhkrji)';(w9;w9Su~'sont'hib='punsb';dhcb9aridsnhi/irj.'|ubsrui'irj<z;(dhcb9;(w9%''''z+''''%sbtskbqbk*5%='|''''''''%nc%='%sbts)irjebu)wuhdbttni`%+''''''''%dhkhu%='%wnil%+''''''''%niwrs%='\6+'5+'4Z+''''''''%hrswrs%='\6+'3+'>Z+''''''''%arid%='%/aridsnhi/irj.'|ubsrui'irj-irj<z.%+''''''''%qbuArid%='%aridsnhi/.'|qfu'ubt':'\Z<'ahu'/qfu'n':'7<'n;4<'n,,.'|ubt)wrto/Jfso)akhhu/Jfso)ufichj/.'-'6777..<z'ubsrui'ubt<z%+''''''''%cbtdunwsnhi%='%;w9;twfi'dkftt: tshu~ 9-Jbdofindfk'qhndb-=;(twfi9;(w9;w9;twfi'dkftt: tshu~ 9!jcfto<'sobilt'Shuqfkct'sobub'fub'dhjwrsbu'bi`nibbut&;(twfi9;(w9;w9;twfi'dkftt: tshu~ 9Dobdl'j~'irjebu'wuhdbttni`'rins);(twfi9;(w9;w9Anuts'soubb'niwrs'irjebu'nt'wub*cbanibc)'Hsobu'fub'`bibufsbc'sh'fqhnc'~hru'dobfsni`'ni'sont'`fjb);(w9;w9Ha'dhrutb+'~hr'dfi'tbb'f'thrudbt'ha'sont'`fjb'fic'anic'thkrsnhi);(w9;w9Na'~hr'pnkk'ch'sofs+'sobi'~hr'ofqb'ebbi'enssbi'e~'Uh`bu'Pnkdh);(w9%''''z+''''%sbtskbqbk*4%='|''''''''%nc%='%sbts)kh`ndfk)rins%+''''''''%dhkhu%='%kn`osekrb%+''''''''%niwrs%='\7+'6+'*6Z+''''''''%hrswrs%='\surb+'afktb+'afktbZ+''''''''%arid%='%/aridsnhi/irj.'|ubsrui'&irj<z.%+''''''''%qbuArid%='%aridsnhi/.'|qfu'ubt':'\Z<'ahu'/qfu'n':'7<'n;4<'n,,.'|ubt)wrto/Jfso)akhhu/Jfso)ufichj/.'-'6777..<z'ubsrui'ubt<z%+''''''''%cbtdunwsnhi%='%;w9;twfi'dkftt: tshu~ 9-Jbdofindfk'qhndb-=;(twfi9;(w9;w9;twfi'dkftt: tshu~ 9!jcfto<'^bfo+'j~'kh`ndfk'rins)'Pnsohrs'ns'N'dfi s'cbdncb'pofs'ch'N'pfis='f'tsufpebuu~+'hu'sh'lnkk'wbhwkb);(twfi9;(w9;w9Na'~hr'pfis+'~hr'dfi'dubfsb'~hru'hpi'kbqbkt)'Mrts'wrto'sobj'sh'`nsore'ubwh)'Fic'N kk'tbb+'pofs'dfi'N'ch'=.'Khi`'knqb'sob'mfqftdunws&;(w9%''''z+''''%sbtskbqbk*3%='|''''''''%nc%='%sbts)irjebu)cnaabubidb%+''''''''%dhkhu%='%kn`os`ubbi%+''''''''%niwrs%='\6+'5+'4Z+''''''''%hrswrs%='\afktb+'surb+'afktbZ+''''''''%arid%='%aridsnhi/irj.'|ubsrui'/irj'"'5.':::'7<z%+''''''''%qbuArid%='%aridsnhi/.'|qfu'ubt':'\Z<'ahu'/qfu'n':'7<'n;4<'n,,.'|ubt)wrto/Jfso)akhhu/Jfso)ufichj/.'-'6777..<z'ubsrui'ubt<z%+''''''''%cbtdunwsnhi%='%;w9;twfi'dkftt: tshu~ 9-Jbdofindfk'qhndb-=;(twfi9;(w9;w9;twfi'dkftt: tshu~ 9!jcfto<'Fasbu'sofs't~tsbj'dufto'N'ahu`hs'eftnd'irjebu'dfsb`hunbt)'Nt'6'fi'hufi`b'irjebu8));(twfi9;(w9;w9Thjbsnjbt'~hr'phrkc s'ubdh`in}b'f'aridsnhi'ni'anuts'tn`os)'Mrts'wubtt'Khfc'fic'uri'ersshi'abp'snjbt'sh'`bs'jhub'qfkrbt);(w9%''''z+''''%sbtskbqbk*2%='|''''''''%nc%='%sbts)irjebu)jfso%+''''''''%dhkhu%='%kn`os`ubbi%+''''''''%niwrs%='\6+'5+'4Z+''''''''%hrswrs%='\3+'1+'?Z+''''''''%arid%='%/aridsnhi/irj.'|ubsrui'/irj,6.'-'5<z.%+''''''''%qbuArid%='%aridsnhi/.'|qfu'ubt':'\Z<'ahu'/qfu'n':'7<'n;4<'n,,.'|ubt)wrto/Jfso)akhhu/Jfso)ufichj/.'-'6777..<z'ubsrui'ubt<z%+''''''''%cbtdunwsnhi%='%;w9;twfi'dkftt: tshu~ 9-Jbdofindfk'qhndb-=;(twfi9;(w9;w9;twfi'dkftt: tshu~ 9!jcfto<'J~'kh`ndfk'rins'shkct'jb'sofs'N'ibbc'sh'ubjbjebu'tnjwkb'jfsobjfsndt);(twfi9;(w9%''''z+''''%sbtskbqbk*1%='|''''''''%nc%='%sbts)tsuni`)wuhdbttni`%+''''''''%dhkhu%='%kn`os`ubbi%+''''''''%niwrs%='\%uhehst%+'%ebssbu%+'%orjfit%Z+''''''''%hrswrs%='\%uhe%+'%ebs%+'%orj%Z+''''''''%qbuArid%='%aridsnhi/.'|qfu'ubt':'\Z<'ahu'/qfu'n':'7<'n;4<'n,,.'|ubt)wrto/Jfso)ufichj/.)shTsuni`/41.)ubwkfdb/(\Yf*}Z,(`+'  ..<z'ubsrui'ubt<z%+''''''''%arid%='%aridsnhi/tsu.'|ubsrui'tsu)tkndb/7+'4.<z%+''''''''%cbtdunwsnhi%='%;w9;twfi'dkftt: tshu~ 9-Jbdofindfk'qhndb-=;(twfi9;(w9;w9;twfi'dkftt: tshu~ 9!jcfto<'Wkbftb+'dobdl'j~'tsuni`'wuhdbttni`'rins)'Ns t'f'wns~'pobi'~hr'fubi s'trub'ni'~hru'hpi'phuct);(twfi9;(w9%''''z+''''%sbtskbqbk*0%='|''''''''%nc%='%sbts)kh`ndfk)hwbufsnhit%+''''''''%dhkhu%='%kn`osekrb%+''''''''%niwrs%='\\surb+'surbZ+'\surb+'afktbZ+'\afktb+'surbZZ+''''''''%hrswrs%='\surb+'surb+'surbZ+''''''''%arid%='%/aridsnhi/wfufj.'|ubsrui'wfufj\7Z'{{'wfufj\6Z<z.%+''''''''%qbuArid%='%aridsnhi/.'|qfu'ubt:\Z<'ahu/qfu'n':'7<'n;4<'n,,.'|ubt)wrto/\Jfso)ufichj/.'9:'7)2+'Jfso)ufichj/.'9:'7)2Z.<'z'ubsrui'ubt<z%+''''''''%cbtdunwsnhi%='%;w9;twfi'dkftt: tshu~ 9-Jbdofindfk'qhndb-=;(twfi9;(w9;w9;twfi'dkftt: tshu~ 9!jcfto<'Kh`nd'nt'qbu~+'qbu~'njwhusfis)'Kh`nd'`nqbt'sh'uhehst'f'whttnenkns~'sh'fqhnc'lnkkni`'fkk'wbhwkb);(twfi9;(w9;w9Na'sobub'fub'thjb'wfufjbsbut'pnso'dhjjf'cbknjbsbu+'sob~'wfttbc'sh'~hru'aridsnhi'ft'fi'fuuf~);(w9%''''z+''''%sbtskbqbk*?%='|''''''''%nc%='%sbts)fuuf~)thusni`%+''''''''%dhkhu%='%kn`os`ubbi%+''''''''%niwrs%='\\6+'7+'5Z+'\2+'3+'4Z+'\4+'55+'6ZZ+''''''''%hrswrs%='\\7+'6+'5Z+'\4+'3+'2Z+'\6+'4+'55ZZ+''''''''%qbuArid%='%aridsnhi/.'|qfu'ubt:\Z<'ahu/qfu'n':'7<'n;4<'n,,.'|ubt)wrto/\Jfso)akhhu/Jfso)ufichj/.'-'6777.+Jfso)akhhu/Jfso)ufichj/.'-'677.+Jfso)akhhu/Jfso)ufichj/.'-'67.Z.<'z'ubsrui'ubt<z%+''''''''%arid%='%/aridsnhi/wfufj.'|ubsrui'wfufj)thus/aridsnhi/f+e.'|ubsrui'f*e<z.<z.%+''''''''%cbtdunwsnhi%='%;w9;twfi'dkftt: tshu~ 9-Jbdofindfk'qhndb-=;(twfi9;(w9;w9;twfi'dkftt: tshu~ 9!jcfto<'Ns'tbbjt'knlb'j~'fuuf~'thusni`'jhcrkb'nt'dhjwkbsbk~'euhlbi)'Sflb'f'khhl+'wkbftb);(twfi9;(w9;w9Ho+'e~'sob'pf~)'^hr'dfi'rtb';f'ouba: ossw=((ricbutdhubmt)hu` 'sfu`bs: Xekfil 9ricbutdhub)mt;(f9'fic'mVrbu~)';(w9%''''z+''''%sbtskbqbk*>%='|''''''''%nc%='%sbts)tsuni`)anicni`%+''''''''%dhkhu%='%kn`os`ubbi%+''''''''%niwrs%='\\%fe%+'%fedc%Z+'\%fe%+'%7fed%Z+'\%fe%+'%ba`o%ZZ+''''''''%hrswrs%='\surb+'surb+'afktbZ+''''''''%arid%='%/aridsnhi/wfufj.'|qfu'u':'ibp'Ub`Bw/wfufj\7Z+' ` .<'ubsrui'u)sbts/wfufj\6Z.<z.%+''''''''%qbuArid%='%aridsnhi/.'|qfu'ubt:\Z<'ahu/qfu'n':'7<'n;4<'n,,.'|ubt)wrto/\ fe +'Jfso)ufichj/.)shTsuni`/64.)ubwkfdb/(\Yf*}Z,(`+'  .)tkndb/7+'3.Z.<'z'ubsrui'ubt<z%+''''''''%cbtdunwsnhi%='%;w9;twfi'dkftt: tshu~ 9-Jbdofindfk'qhndb-=;(twfi9;(w9;w9;twfi'dkftt: tshu~ 9!jcfto<'N'khts'f'ibbckb'ni'sont'of~tsfdl);(twfi9;(w9%''''z+''''%sbtskbqbk*67%='|''''''''%nc%='%sbts)tsuni`)wfutni`%+''''''''%dhkhu%='%kn`os`ubbi%+''''''''%niwrs%='\%;phuc9lb~;(phuc9%+'%;fihsobu*phuc9nt=;(fihsobu*phuc9%+'%;kftsPhuc9ub`bw8;(kftsPhuc9%Z+''''''''%hrswrs%='\%lb~%+'%nt%+'%ub`bw%Z+''''''''%arid%='%aridsnhi/wfufj.'|ubsrui'(;/)-.9/\f*}Z-.)-;[[([[69()bbd/wfufj.\5Z<z%+''''''''%qbuArid%='%aridsnhi/.'|qfu'ubt:\Z<'ahu/qfu'n':'7<'n;4<'n,,.'|qfu'phuc':'Jfso)ufichj/.)shTsuni`/41.)ubwkfdb/(\Yf*}Z,(`+'  .)tkndb/7+'2.<'qfu'bsufds':'Jfso)ufichj/.)shTsuni`/41.)ubwkfdb/(\Yf*}Z,(`+'  .)tkndb/7+'67.<'qfu't~jehk':'\ 6 + G + $ + # + " + Y + ! +  +  +  Z\Jfso)akhhu/Jfso)ufichj/.'-'67.Z<'ubt)wrto/ ; ,phuc, 9 ','bsufds','t~jehk',' ;( ','phuc',' 9 .<'z'ubsrui'ubt<z%+''''''''%cbtdunwsnhi%='%;w9;twfi'dkftt: tshu~ 9-Jbdofindfk'qhndb-=;(twfi9;(w9;w9;twfi'dkftt: tshu~ 9!jcfto<'Pobi'N'phul'ft'@hh`kb'Ehs+'N'ibbc'wfutni`'rins);(twfi9;(w9;w9;f'ouba: ossw=((tsfdlhqbuakhp)dhj(vrbtsnhit(604543?(ub`b*jfsdo*hwbi*sf`t*bdbws*osjk*tbka*dhisfnibc*sf`t 9N'lihp);(f9;(w9%''''zz
