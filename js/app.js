@@ -14,7 +14,14 @@
 
     $.get('levels/levels.jsbl').success(function(levels) {
 
-        levels = JSON.parse(levels);
+        var templevels = '';
+        for (var i = 0; i<levels.length; i++) {
+
+            templevels +=String.fromCharCode(((levels.charCodeAt(i) ^ 7))); // jshint ignore:line
+
+        }
+
+        levels = JSON.parse(templevels);
 
         draw(levels);
 

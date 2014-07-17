@@ -7,6 +7,7 @@
     "test": "test"
   },
   "scripts": {
+      "install": "node levels/jsbl.js",
     "test": "mocha -R spec",
     "start": "http-server -p 8090"
   },
