@@ -88,6 +88,6 @@
         "output": ["key", "is", "regexp"],
         "func": "function(param) {return /<(.*)>([a-z]*).*<\\/\\1>/.exec(param)[2];}",
         "verFunc": "function() {var res=[]; for(var i = 0; i<3; i++) {var word = Math.random().toString(36).replace(/[^a-z]+/g, '').slice(0, 5); var extract = Math.random().toString(36).replace(/[^a-z]+/g, '').slice(0, 10); var symbol = ['1','@','#','$','%','^','&','','',''][Math.floor(Math.random() * 10)]; res.push('<'+word+'>' + extract + symbol + '</' + word + '>'); } return res;}",
-        "description": "<p><span class='story'>*Mechanical voice*:</span></p><p><span class='story'>&mdash; When I work as Google Bot, I need parsing unit.</span></p><p><a href='http://stackoverflow.com/questions/1732348/regex-match-open-tags-except-xhtml-self-contained-tags'>I know.</a></p>"
+        "description": "<p><span class='story'>*Mechanical voice*:</span></p><p><span class='story'>&mdash; When I work as Google Bot, I need parsing unit.</span></p><p><a href='http://stackoverflow.com/questions/1732348/regex-match-open-tags-except-xhtml-self-contained-tags' target='_blank'>I know.</a></p>"
     }
 }
