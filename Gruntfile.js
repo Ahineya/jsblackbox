@@ -24,6 +24,10 @@ module.exports = function(grunt) {
                 src: ['src/js/*.js'],
                 dest: 'dist/js/<%= pkg.name %>.js'
             },
+            lib: {
+                src: ['src/lib/**/*.js'],
+                dest: 'dist/js/lib.js'
+            },
             css: {
                 src: ['src/css/reset.css', 'src/css/main.css'],
                 dest: 'dist/css/main.css'
@@ -48,13 +52,13 @@ module.exports = function(grunt) {
                         dest: 'dist/',
                         filter: 'isFile'
                     },
-                    {
+                    /*{
                         expand: true,
                         flatten: true,
-                        src: ['src/lib/*'],
+                        src: ['src/lib*//*'],
                         dest: 'dist/lib',
                         filter: 'isFile'
-                    },
+                    },*/
                     {
                         expand: true,
                         flatten: true,
@@ -149,7 +153,16 @@ module.exports = function(grunt) {
             },
 
             all: {}
-        }
+        },
+
+            bower: {
+                options: {
+                    targetDir: 'src/lib'
+                },
+                install: {
+                }
+            }
+
 
     });
 
@@ -165,9 +178,10 @@ module.exports = function(grunt) {
     grunt.loadNpmTasks('grunt-mocha-test');
     grunt.loadNpmTasks('grunt-gh-pages');
     grunt.loadNpmTasks('grunt-run');
+    grunt.loadNpmTasks('grunt-bower-task');
 
     // Default task.
-    grunt.registerTask('default', ['jshint', 'clean', 'mochaTest', 'concat', 'run:buildLevels', 'copy', 'uglify']);
+    grunt.registerTask('default', ['bower', 'jshint', 'clean', 'mochaTest', 'concat', 'run:buildLevels', 'copy', 'uglify']);
     grunt.registerTask('server', ['default', 'connect', 'watch']);
     grunt.registerTask('deploy', ['default', 'gh-pages']);
 

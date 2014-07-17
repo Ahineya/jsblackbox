@@ -1,0 +1,26 @@
+{
+  "name": "jsblackbox",
+  "version": "0.0.2",
+  "homepage": "https://github.com/Ahineya/jsblackbox",
+  "authors": [
+    "Pavel Evsegneev <pavel@evsegneev.pp.ua>"
+  ],
+  "description": "jsblackbox javascript challenges application",
+  "keywords": [
+    "javascript",
+    "game"
+  ],
+  "license": "ISC",
+  "private": true,
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "jquery": "~2.1.1",
+    "underscore": "~1.6.0"
+  }
+}
