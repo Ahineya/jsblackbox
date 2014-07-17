@@ -3,3 +3,4 @@ node_modules/
 dist/
 .grunt/
 bower_components/
+src/lib/

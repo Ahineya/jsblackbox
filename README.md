@@ -13,7 +13,7 @@ npm install
 npm start
 ```
 
-Open a browser at [localhost:8090](http://localhost:8090/)
+After watch command runs (you will see 'Waiting...' in the terminal) open a browser at [localhost:8090](http://localhost:8090/)
 
 ## Levels format
 Currently levels described in an ugly format. You can see src/levels/levels.jsbl file.
